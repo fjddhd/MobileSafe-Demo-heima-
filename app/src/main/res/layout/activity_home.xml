@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/tv1"
+        android:text="功能列表"
+        android:background="#8866ff00"
+        android:textColor="#000"
+        android:gravity="center"
+        android:textSize="22sp"/>
+    <fujingdong.com.mobilesafe.view.FocusedTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:text="有了手机卫士，玩什么什么超神，实在是太nb了"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        />
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:numColumns="3"
+        android:id="@+id/gv_home"
+        ></GridView>
+
+</LinearLayout>
