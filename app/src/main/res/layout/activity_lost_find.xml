@@ -47,8 +47,8 @@
             android:layout_marginLeft="5dp"
             android:textSize="20sp"/>
         <ImageView
-            android:layout_width="40"
-            android:layout_height="30"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
@@ -68,9 +68,14 @@
         <TextView
             style="@style/MyContentStyle"
             android:text="重新进入设置向导"
+            android:layout_width="match_parent"
             android:layout_centerVertical="true"
+            android:background="@drawable/shape_selector"
             android:textColor="#000"
             android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:clickable="true"
+            android:onClick="reEnter"
             android:textSize="20sp"/>
 
         <ImageView
