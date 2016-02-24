@@ -20,6 +20,7 @@ import android.widget.Toast;
 import fujingdong.com.mobilesafe.R;
 import fujingdong.com.mobilesafe.utils.MD5Encoder;
 import fujingdong.com.mobilesafe.utils.PrefUtils;
+import fujingdong.com.mobilesafe.utils.ToastUtils;
 
 /**
  * Created by Administrator on 2016/2/19.
@@ -45,19 +46,21 @@ public class HomeActivity extends Activity{
         gvHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
+                switch (position) {
                     case 0:
                         //手机防盗
                         showPasswordDialog();
                         break;
                     case 8:
                         //设置中心
-                        startActivity(new Intent(HomeActivity.this,SettingActivity.class));
+                        startActivity(new Intent(HomeActivity.this, SettingActivity.class));
                         break;
 
                 }
             }
         });
+        String boottest = PrefUtils.getString(this, "boottest", null);
+        ToastUtils.showToast(this,boottest);
 
     }
 

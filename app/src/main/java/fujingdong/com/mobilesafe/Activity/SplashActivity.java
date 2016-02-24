@@ -165,7 +165,8 @@ public class SplashActivity extends AppCompatActivity {
                 HttpURLConnection urlConnection = null;
                 try {
                     //本机地址用localhost，但是用模拟器要访问本地地址要用10.0.0.2
-                    URL url = new URL("http://10.0.2.2:8080/updata.json");
+//                    URL url = new URL("http://10.0.2.2:8080/updata.json");
+                    URL url = new URL("http://fjddhd-update.stor.sinaapp.com/update.json");
                     urlConnection = (HttpURLConnection) url.openConnection();
                     urlConnection.setRequestMethod("GET");//设置请求方法
                     urlConnection.setConnectTimeout(5000);//连接超时时间

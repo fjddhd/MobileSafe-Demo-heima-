@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import fujingdong.com.mobilesafe.R;
 import fujingdong.com.mobilesafe.utils.PrefUtils;
@@ -16,10 +18,34 @@ import fujingdong.com.mobilesafe.utils.PrefUtils;
  */
 public class Setup4Activity extends Activity {
     private GestureDetector gd;
+    private CheckBox checkBox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup4);
+
+        checkBox= (CheckBox) findViewById(R.id.cb_protect);
+        boolean ischecked = PrefUtils.getBoolean(Setup4Activity.this, "protect", false);
+        if(ischecked){
+            checkBox.setChecked(true);
+            checkBox.setText("防盗保护已经开启");
+        }else{
+            checkBox.setChecked(false);
+            checkBox.setText("防盗保护没有开启");
+        }
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            //当checkbox的状态发生变化，就回调此方法
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    checkBox.setText("防盗保护已经开启");
+                    PrefUtils.setBoolean(Setup4Activity.this,"protect",true);
+                }else {
+                    checkBox.setText("防盗保护没有开启");
+                    PrefUtils.setBoolean(Setup4Activity.this, "protect", false);
+                }
+            }
+        });
         gd = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
             //监听手势滑动
             //e1表示滑动起始点，e2表示滑动终点

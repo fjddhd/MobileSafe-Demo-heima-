@@ -3,6 +3,9 @@ package fujingdong.com.mobilesafe.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import fujingdong.com.mobilesafe.Activity.HomeActivity;
+import fujingdong.com.mobilesafe.receiver.BootCompleteReceiver;
+
 /**
  * Created by Administrator on 2016/2/20.
  */

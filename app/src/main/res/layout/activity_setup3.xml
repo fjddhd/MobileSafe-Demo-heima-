@@ -21,11 +21,14 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入或者选择安全号码"/>
+        android:hint="请输入或者选择安全号码"
+        android:inputType="phone"
+        android:id="@+id/et_phone"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="请选择联系人"
+        android:onClick="contact"
         android:background="@drawable/btn_lightgreen_selector"/>
     <LinearLayout
         android:layout_width="match_parent"

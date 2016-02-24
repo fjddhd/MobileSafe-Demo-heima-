@@ -12,6 +12,7 @@ import android.view.View;
 
 import fujingdong.com.mobilesafe.R;
 import fujingdong.com.mobilesafe.utils.PrefUtils;
+import fujingdong.com.mobilesafe.utils.ToastUtils;
 import fujingdong.com.mobilesafe.view.SettingItemView;
 
 /**
@@ -34,20 +35,20 @@ public class Setup2Activity extends Activity {
             sivsim.setChecked(true);
         }
         sivsim.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (sivsim.isChecked()){
-                        sivsim.setChecked(false);
-                        PrefUtils.removeString(Setup2Activity.this,"Sim");//删除已绑定的sim卡
-                    }else {
-                        sivsim.setChecked(true);
-                        //保存sim卡信息
-                        TelephonyManager tm= (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-                        String simSerialNumber = tm.getSimSerialNumber();//调用系统api（telephonymanager）获取sim卡序列号
-                        System.out.println(simSerialNumber);
-                        PrefUtils.setString(Setup2Activity.this,"Sim",simSerialNumber);
-                    }
+            @Override
+            public void onClick(View v) {
+                if (sivsim.isChecked()) {
+                    sivsim.setChecked(false);
+                    PrefUtils.removeString(Setup2Activity.this, "Sim");//删除已绑定的sim卡
+                } else {
+                    sivsim.setChecked(true);
+                    //保存sim卡信息
+                    TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+                    String simSerialNumber = tm.getSimSerialNumber();//调用系统api（telephonymanager）获取sim卡序列号
+                    System.out.println(simSerialNumber);
+                    PrefUtils.setString(Setup2Activity.this, "Sim", simSerialNumber);
                 }
+            }
         });
 
 
@@ -78,6 +79,11 @@ public class Setup2Activity extends Activity {
     }
     //方法的封装
     public  void showNextPage(){
+        String sim=PrefUtils.getString(this,"Sim",null);
+        if (TextUtils.isEmpty(sim)){
+            ToastUtils.showToast(this,"必须先绑定sim卡才能进行下一步");
+            return;
+        }
         startActivity(new Intent(Setup2Activity.this, Setup3Activity.class));
         finish();
     }
